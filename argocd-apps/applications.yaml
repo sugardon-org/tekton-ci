@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tekton-ci
+  name: tekton-ci-test
   namespace: helmfile-argocd-default
 spec:
   project: default
@@ -11,13 +11,13 @@ spec:
       recurse: false
     path: tests/overlays/development
     repoURL: https://github.com/sugardon-org/tekton-ci
-    targetRevision: HEAD
+    targetRevision: main
   destination:
     namespace: tekton-ci
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
-      prune: false
+      prune: true
       selfHeal: false
     syncOptions:
     - CreateNamespace=true
