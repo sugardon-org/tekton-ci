@@ -21,3 +21,26 @@ spec:
       selfHeal: false
     syncOptions:
     - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tekton-ci-tasks
+  namespace: helmfile-argocd-default
+spec:
+  project: default
+  source:
+    directory:
+      recurse: false
+    path: tasks/overlays/development
+    repoURL: https://github.com/sugardon-org/tekton-ci
+    targetRevision: main
+  destination:
+    namespace: tekton-ci
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+    - CreateNamespace=true
