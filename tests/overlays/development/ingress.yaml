@@ -7,10 +7,10 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: nginx-test.sugardon.com
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: nginx-test
-          servicePort: 80
+    - host: nginx-test.sugardon.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: nginx-test
+              servicePort: 80
