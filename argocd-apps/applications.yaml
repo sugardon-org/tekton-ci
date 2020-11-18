@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tekton-ci-test
+  name: tekton-cicd-test
   namespace: helmfile-argocd-default
 spec:
   project: default
@@ -10,10 +10,10 @@ spec:
     directory:
       recurse: false
     path: tests/overlays/development
-    repoURL: https://github.com/sugardon-org/tekton-ci
+    repoURL: https://github.com/sugardon-org/tekton-cicd
     targetRevision: main
   destination:
-    namespace: tekton-ci
+    namespace: tekton-cicd
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
@@ -25,7 +25,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tekton-tasks
+  name: tekton-cicd-tasks
   namespace: helmfile-argocd-default
 spec:
   project: default
@@ -33,10 +33,10 @@ spec:
     directory:
       recurse: false
     path: tasks/overlays/development
-    repoURL: https://github.com/sugardon-org/tekton-ci
+    repoURL: https://github.com/sugardon-org/tekton-cicd
     targetRevision: main
   destination:
-    namespace: tekton-ci
+    namespace: tekton-cicd
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
