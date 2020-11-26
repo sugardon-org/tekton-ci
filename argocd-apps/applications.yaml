@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: tekton-cicd-test
-  namespace: helmfile-argocd-default
+  namespace: helmfile-argocd-sugardon01
 spec:
   project: default
   source:
@@ -26,7 +26,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: tekton-cicd-tasks
-  namespace: helmfile-argocd-default
+  namespace: helmfile-argocd-sugardon01
 spec:
   project: default
   source:
