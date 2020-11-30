@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: nginx-test
-  volumes:
-    - name: test-volume
-      persistentVolumeClaim:
-        claimName: tekton-local-pvc
+  # volumes:
+  #  - name: test-volume
+  #    persistentVolumeClaim:
+  #      claimName: tekton-local-pvc
