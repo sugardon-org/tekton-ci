@@ -1,0 +1,20 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: hello-world
+spec:
+  params:
+    - name: greet
+      default: "helloHELLO"
+  workspaces:
+    - name: git-source
+  tasks:
+    - name: echo-hello-world
+      taskRef:
+        name: echo-hello-world
+      params:
+        - name: echo
+          value: $(params.greet)
+      workspaces:
+        - name: git-source

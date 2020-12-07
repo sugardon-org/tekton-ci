@@ -48,6 +48,29 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: tekton-cicd-pipelines
+  namespace: helmfile-argocd-sugardon01
+spec:
+  project: default
+  source:
+    directory:
+      recurse: false
+    path: pipelines/overlays/development
+    repoURL: https://github.com/sugardon-org/tekton-cicd
+    targetRevision: main
+  destination:
+    namespace: tekton-cicd
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: tekton-cicd-volumes
   namespace: helmfile-argocd-sugardon01
 spec:
