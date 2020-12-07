@@ -16,5 +16,5 @@ spec:
       params:
         - name: echo
           value: $(params.greet)
-      workspaces:
-        - name: git-source
+      # workspaces:
+      # - name: git-source
