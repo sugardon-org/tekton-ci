@@ -1,0 +1,13 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: hello-world
+spec:
+  pipelineRef:
+    name: hello-world
+  # serviceAccountName: 'default'
+  workspaces:
+    - name: git-source
+      persistentVolumeClaim:
+        claimName: tekton-local-pvc
