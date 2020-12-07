@@ -16,6 +16,6 @@ spec:
         app: nginx-test
     spec:
       volumes:
-       - name: test-volume
-         persistentVolumeClaim:
-           claimName: tekton-local-pvc
+        - name: test-volume
+          persistentVolumeClaim:
+            claimName: tekton-local-pvc
