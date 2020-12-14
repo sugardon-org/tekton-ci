@@ -13,8 +13,8 @@ spec:
     - name: echo-hello-world
       taskRef:
         name: echo-hello-world
-      params:
-        - name: echo
-          value: $(params.greet)
+      #params:
+      #  - name: echo
+      #   value: $(params.greet)
       # workspaces:
       # - name: git-source
