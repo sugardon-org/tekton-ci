@@ -4,10 +4,15 @@ kind: Task
 metadata:
   name: echo-hello-world
 spec:
+  params:
+    - name: greet
+      type: string
+      description: The string comment for greeting
+      default: Have a nice day! (DEFAULT)
   steps:
     - name: echo
       image: ubuntu
       command:
         - echo
       args:
-        - "Hello World"
+        - "Hello World $(params.greet)"
