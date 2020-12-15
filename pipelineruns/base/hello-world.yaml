@@ -4,6 +4,9 @@ kind: PipelineRun
 metadata:
   name: hello-world
 spec:
+  params:
+    - name: greet
+      value: "Hello from PipelineRun"
   pipelineRef:
     name: hello-world
   # serviceAccountName: 'default'
