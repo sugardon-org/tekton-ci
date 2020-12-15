@@ -6,15 +6,15 @@ metadata:
 spec:
   params:
     - name: greet
-      default: "helloHELLO"
+      default: "Hello from Pipeline"
   workspaces:
     - name: git-source
   tasks:
     - name: echo-hello-world
       taskRef:
         name: echo-hello-world
-      #params:
-      #  - name: echo
-      #   value: $(params.greet)
+      params:
+        - name: greet
+          value: $(params.greet)
       # workspaces:
       # - name: git-source
