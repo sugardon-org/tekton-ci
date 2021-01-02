@@ -9,7 +9,7 @@ spec:
       value: "Hello from PipelineRun"
   pipelineRef:
     name: hello-world
-  # serviceAccountName: 'default'
+  serviceAccountName: 'dockerhub-account'
   workspaces:
     - name: git-source
       persistentVolumeClaim:
