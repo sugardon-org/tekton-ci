@@ -12,8 +12,6 @@ spec:
   serviceAccountName: dockerhub-account
   workspaces:
     - name: git-source
-      persistentVolumeClaim:
-        claimName: tekton-local-pvc
       volumeClaimTemplate:
         # https://github.com/tektoncd/pipeline/blob/main/docs/workspaces.md#volumeclaimtemplate
         spec:
