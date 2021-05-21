@@ -14,3 +14,12 @@ spec:
     - name: git-source
       persistentVolumeClaim:
         claimName: tekton-local-pvc
+      volumeClaimTemplate:
+        # https://github.com/tektoncd/pipeline/blob/main/docs/workspaces.md#volumeclaimtemplate
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+          storageClassName: tekton-dev-sc
+          requests:
+            storage: 1Gi

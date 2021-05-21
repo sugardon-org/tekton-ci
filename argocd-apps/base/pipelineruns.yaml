@@ -1,0 +1,23 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tekton-cicd-pipelineruns
+  namespace: dummy
+spec:
+  project: default
+  source:
+    directory:
+      recurse: false
+    path: pipelineruns/overlays/development
+    repoURL: https://github.com/sugardon-org/tekton-cicd
+    targetRevision: main
+  destination:
+    namespace: tekton-cicd
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
