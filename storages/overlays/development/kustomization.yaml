@@ -4,5 +4,5 @@ kind: Kustomization
 
 namespace: tekton-cicd
 resources:
+  - tekton-dev-sc.yaml
   - ../../base
-  - pvc.yaml

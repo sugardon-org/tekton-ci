@@ -1,0 +1,15 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: tekton-dev-sc
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
+provisioner: nfs.csi.k8s.io
+parameters:
+  server: 192.168.120.111
+  share: /export/storage-class/tekton-dev-sc
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+mountOptions:
+  - hard
