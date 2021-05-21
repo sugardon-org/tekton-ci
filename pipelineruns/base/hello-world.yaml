@@ -18,6 +18,6 @@ spec:
           accessModes:
             - ReadWriteOnce
           resources:
+            requests:
+              storage: 1Gi
           storageClassName: tekton-dev-sc
-          requests:
-            storage: 1Gi
