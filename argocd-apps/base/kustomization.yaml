@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - tasks.yaml
   - storages.yaml
+  - tests.yaml

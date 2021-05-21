@@ -4,7 +4,8 @@ kind: Kustomization
 
 namespace: tekton-cicd
 resources:
-  - ../../base
   - ingress.yaml
+  - pvc.yaml
+  - ../../base
 patches:
   - deployment.yaml
