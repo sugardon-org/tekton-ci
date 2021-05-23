@@ -6,6 +6,6 @@ resources:
   - pipelineruns.yaml
   - pipelines.yaml
   - tasks.yaml
-  - serviceaccounts.yaml
+  - rbac.yaml
   - storages.yaml
   - tests.yaml
