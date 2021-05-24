@@ -8,3 +8,4 @@ resources:
   # https://github.com/tektoncd/catalog
   - https://raw.githubusercontent.com/tektoncd/catalog/master/task/git-clone/0.2/git-clone.yaml
   - https://raw.githubusercontent.com/tektoncd/catalog/master/task/yaml-lint/0.1/yaml-lint.yaml
+  - https://raw.githubusercontent.com/tektoncd/catalog/master/task/buildpacks/0.3/buildpacks.yaml
