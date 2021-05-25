@@ -1,0 +1,42 @@
+---
+# https://github.com/tektoncd/triggers/tree/main/examples/github
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: github-sugardon-nextjs-typescript-tutorials
+spec:
+  params:
+    - name: git-repo-url
+    - name: git-pr-rev
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: github-nextjs-tutorial-
+      spec:
+        serviceAccountName: dockerhub-account
+        params:
+          - name: git-repo-url
+            value: $(tt.params.git-repo-url)
+          - name: git-pr-rev
+            value: $(tt.params.git-pr-rev)
+          - name: path
+            value: "nextjs-blog/"
+          - name: buildpacks-builder
+            value: "gcr.io/paketo-buildpacks/builder:0.1.108-base"
+          - name: build-image-url
+            value: "docker.io/sugardon/nextjs-typescript-tutorials"
+          - name: build-image-tag
+            value: $(tt.params.git-pr-rev)
+        pipelineRef:
+          name: buildpacks
+        workspaces:
+          - name: source-ws
+            volumeClaimTemplate:
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 1Gi
+                storageClassName: tekton-dev-sc
