@@ -41,7 +41,7 @@ spec:
           value: "true"
     - name: buildpacks
       runAfter:
-        - fetch-repository
+        - git-clone
       taskRef:
         name: buildpacks
       workspaces:
