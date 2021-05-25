@@ -1,0 +1,41 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: github-sugardon-nextjs-typescript-tutorials
+spec:
+  triggers:
+    - name: github-pr
+      interceptors:
+        - name: "github"
+          ref:
+            # https://github.com/tektoncd/triggers/blob/main/docs/interceptors.md#github-interceptors
+            name: "github"
+          params:
+            - name: "eventTypes"
+              value: ["pull_request"]
+        - name: "only when PRs are opened"
+          ref:
+            # https://github.com/tektoncd/triggers/blob/main/docs/interceptors.md#cel-interceptors
+            name: "cel"
+          params:
+            - name: "filter"
+              value: "body.action in ['opened', 'synchronize', 'reopened']"
+      bindings:
+        - ref: github-pr
+      template:
+        ref: github-sugardon-nextjs-typescript-tutorials
+  resources:
+    kubernetesResource:
+      spec:
+        template:
+          spec:
+            serviceAccountName: tekton-triggers-example-sa
+            containers:
+              - resources:
+                  requests:
+                    memory: "64Mi"
+                    cpu: "250m"
+                  limits:
+                    memory: "128Mi"
+                    cpu: "500m"

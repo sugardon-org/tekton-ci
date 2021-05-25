@@ -9,5 +9,6 @@ resources:
   - rbac.yaml
   - storages.yaml
   - tests.yaml
+  - eventlisteners.yaml
   - triggerbindings.yaml
   - triggertemplates.yaml
