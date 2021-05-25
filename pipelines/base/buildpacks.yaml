@@ -21,8 +21,8 @@ spec:
       type: string
   workspaces:
     - name: source-ws
-    - name: cache-ws
-      optional: ture
+    #- name: cache-ws
+    #optional: true
   tasks:
     - name: git-clone
       taskRef:
@@ -47,8 +47,8 @@ spec:
       workspaces:
         - name: source
           workspace: source-ws
-        - name: cache
-          workspace: chache-ws
+        #- name: cache
+        #workspace: chache-ws
       params:
         - name: APP_IMAGE
           value: $(params.build-image-url):$(params.build-image-tag)
@@ -70,5 +70,5 @@ spec:
               #!/usr/bin/env bash
               set -e
               echo "Digest of created app image: $(params.DIGEST)"
-            params:
-              - name: DIGEST
+        params:
+          - name: DIGEST
