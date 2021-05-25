@@ -1,0 +1,74 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: buildpacks
+spec:
+  params:
+    - name: git-repo-url
+      type: string
+    - name: git-rev
+      type: string
+    - name: path
+      type: string
+      description: "Example: apps/maven"
+      default: ""
+    - name: buildpacks-builder
+      default: "gcr.io/buildpacks/builder"
+    - name: build-image-url
+      type: string
+    - name: build-image-tag
+      type: string
+  workspaces:
+    - name: source-ws
+    - name: cache-ws
+      optional: ture
+  tasks:
+    - name: git-clone
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: source-ws
+      params:
+        - name: url
+          value: $(params.git-repo-url)
+        - name: revision
+          value: $(params.git-rev)
+        - name: subdirectory
+          value: ""
+        - name: deleteExisting
+          value: "true"
+    - name: buildpacks
+      runAfter:
+        - fetch-repository
+      taskRef:
+        name: buildpacks
+      workspaces:
+        - name: source
+          workspace: source-ws
+        - name: cache
+          workspace: chache-ws
+      params:
+        - name: APP_IMAGE
+          value: $(params.build-image-url):$(params.build-image-tag)
+        - name: SOURCE_SUBPATH
+          value: $(params.path)
+        - name: BUILDER_IMAGE
+          value: $(params.buildpacks-builder)
+    - name: display-results
+      runAfter:
+        - buildpacks
+      params:
+        - name: DIGEST
+          value: $(tasks.buildpacks.results.APP_IMAGE_DIGEST)
+      taskSpec:
+        steps:
+          - name: print
+            image: docker.io/library/bash:5.1.4@sha256:b208215a4655538be652b2769d82e576bc4d0a2bb132144c060efc5be8c3f5d6
+            script: |
+              #!/usr/bin/env bash
+              set -e
+              echo "Digest of created app image: $(params.DIGEST)"
+            params:
+              - name: DIGEST
