@@ -14,7 +14,7 @@ spec:
       metadata:
         generateName: github-nextjs-tutorial-
       spec:
-        serviceAccountName: dockerhub-account
+        serviceAccountName: build-bot
         params:
           - name: git-repo-url
             value: $(tt.params.git-repo-url)
