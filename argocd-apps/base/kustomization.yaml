@@ -8,7 +8,7 @@ resources:
   - tasks.yaml
   - rbac.yaml
   - storages.yaml
-  - tests.yaml
+  #- tests.yaml
   - eventlisteners.yaml
   - triggerbindings.yaml
   - triggertemplates.yaml
