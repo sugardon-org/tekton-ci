@@ -7,7 +7,7 @@ spec:
   params:
     - name: git-repo-url
       type: string
-    - name: git-rev
+    - name: git-pr-rev
       type: string
     - name: path
       type: string
@@ -34,7 +34,7 @@ spec:
         - name: url
           value: $(params.git-repo-url)
         - name: revision
-          value: $(params.git-rev)
+          value: $(params.git-pr-rev)
         - name: subdirectory
           value: ""
         - name: deleteExisting
