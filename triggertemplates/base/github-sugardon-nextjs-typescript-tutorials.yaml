@@ -18,7 +18,7 @@ spec:
         params:
           - name: git-repo-url
             value: $(tt.params.git-repo-url)
-          - name: git-pr-rev
+          - name: git-rev
             value: $(tt.params.git-pr-rev)
           - name: path
             value: "nextjs-blog/"
