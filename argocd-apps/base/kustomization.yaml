@@ -10,5 +10,6 @@ resources:
   - storages.yaml
   #- tests.yaml
   - eventlisteners.yaml
+  - ingress.yaml
   - triggerbindings.yaml
   - triggertemplates.yaml
