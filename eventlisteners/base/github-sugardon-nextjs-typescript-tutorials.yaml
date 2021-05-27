@@ -12,6 +12,10 @@ spec:
             # https://github.com/tektoncd/triggers/blob/main/docs/interceptors.md#github-interceptors
             name: "github"
           params:
+            - name: "secretRef"
+              value:
+                secretName: sugardon-github-webhook-secret
+                secretKey: secretToken
             - name: "eventTypes"
               value: ["pull_request"]
         - name: "only when PRs are opened"
