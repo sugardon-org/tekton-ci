@@ -35,6 +35,8 @@ spec:
             value: "sugardon/nextjs-typescript-tutorials"
           - name: status-target-url
             value: "https://hub.docker.com/repository/docker/sugardon/nextjs-typescript-tutorials"
+          - name: github-token-secret-name
+            value: "sugardon-github-token"
         pipelineRef:
           name: buildpacks
         workspaces:
