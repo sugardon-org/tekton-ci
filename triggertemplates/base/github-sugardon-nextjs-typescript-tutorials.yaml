@@ -28,6 +28,13 @@ spec:
             value: "docker.io/sugardon/nextjs-typescript-tutorials"
           - name: build-image-tag
             value: $(tt.params.git-pr-rev)
+          # set github status
+          - mame: enable-github-set-status
+            value: "true"
+          - name: repo-full-name
+            value: "sugardon/nextjs-typescript-tutorials"
+          - name: status-target-url
+            value: "https://hub.docker.com/repository/docker/sugardon/nextjs-typescript-tutorials"
         pipelineRef:
           name: buildpacks
         workspaces:

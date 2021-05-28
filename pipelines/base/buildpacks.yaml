@@ -19,6 +19,13 @@ spec:
       type: string
     - name: build-image-tag
       type: string
+    # For github set status
+    - name: enable-github-set-status
+      default: "false"
+    - name: repo-full-name
+      type: string
+    - name: status-target-url
+      type: string
   workspaces:
     - name: source-ws
     #- name: cache-ws
@@ -72,3 +79,25 @@ spec:
               echo "Digest of created app image: $(params.DIGEST)"
         params:
           - name: DIGEST
+  finally:
+    - name: set-github-status-failure
+      when:
+        - input: $(params.enable-github-set-status)
+          operator: in
+          values: ["true"]
+        - input: $(tasks.status)
+          operator: in
+          values: ["Failed"]
+      taskRef:
+        name: github-set-status
+      params:
+        - name: REPO_FULL_NAME
+          value: $(params.repo-full-name)
+        - name: SHA
+          value: $(params.git-rev)
+        - name: DESCRIPTION
+          value: "Tekton Pipeline $(context.pipelineRun.name) has failed"
+        - name: STATE
+          value: success
+        - name: TARGET_URL
+          value: $(params.status-target-url)
