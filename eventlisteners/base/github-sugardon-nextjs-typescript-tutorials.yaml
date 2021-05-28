@@ -38,7 +38,7 @@ spec:
             containers:
               - resources:
                   requests:
-                    memory: "50Mi"
+                    memory: "10Mi"
                     cpu: "100m"
                   limits:
                     memory: "100Mi"
