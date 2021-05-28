@@ -132,3 +132,28 @@ spec:
           value: $(params.github-token-secret-name)
         - name: GITHUB_TOKEN_SECRET_KEY
           value: $(params.github-token-secret-key)
+    - name: set-github-status-succeeded
+      when:
+        - input: $(params.enable-github-set-status)
+          operator: in
+          values: ["true"]
+        - input: $(tasks.status)
+          operator: in
+          values: ["Succeeded"]
+      taskRef:
+        name: github-set-status
+      params:
+        - name: REPO_FULL_NAME
+          value: $(params.repo-full-name)
+        - name: SHA
+          value: $(params.git-rev)
+        - name: DESCRIPTION
+          value: "Tekton Pipeline $(context.pipelineRun.name) has succeeded"
+        - name: STATE
+          value: success
+        - name: TARGET_URL
+          value: $(params.status-target-url)
+        - name: GITHUB_TOKEN_SECRET_NAME
+          value: $(params.github-token-secret-name)
+        - name: GITHUB_TOKEN_SECRET_KEY
+          value: $(params.github-token-secret-key)
