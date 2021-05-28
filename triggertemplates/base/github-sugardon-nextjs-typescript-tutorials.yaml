@@ -29,7 +29,7 @@ spec:
           - name: build-image-tag
             value: $(tt.params.git-pr-rev)
           # set github status
-          - mame: enable-github-set-status
+          - name: enable-github-set-status
             value: "true"
           - name: repo-full-name
             value: "sugardon/nextjs-typescript-tutorials"
