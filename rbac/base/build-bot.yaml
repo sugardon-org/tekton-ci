@@ -5,3 +5,4 @@ metadata:
   name: build-bot
 secrets:
   - name: sugardon-dockerhub-secret
+  - name: sugardon-github-secret
