@@ -35,6 +35,29 @@ spec:
     #- name: cache-ws
     #optional: true
   tasks:
+    - name: set-github-status-pending
+      when:
+        - input: $(params.enable-github-set-status)
+          operator: in
+          values: ["true"]
+      taskRef:
+        name: github-set-status
+      params:
+        - name: REPO_FULL_NAME
+          value: $(params.repo-full-name)
+        - name: SHA
+          value: $(params.git-rev)
+        - name: DESCRIPTION
+          value: "Tekton Pipeline $(context.pipelineRun.name) is pending"
+        - name: STATE
+          value: pending
+        - name: TARGET_URL
+          value: $(params.status-target-url)
+        - name: GITHUB_TOKEN_SECRET_NAME
+          value: $(params.github-token-secret-name)
+        - name: GITHUB_TOKEN_SECRET_KEY
+          value: $(params.github-token-secret-key)
+    # main build process
     - name: git-clone
       taskRef:
         name: git-clone
@@ -102,7 +125,7 @@ spec:
         - name: DESCRIPTION
           value: "Tekton Pipeline $(context.pipelineRun.name) has failed"
         - name: STATE
-          value: success
+          value: failure
         - name: TARGET_URL
           value: $(params.status-target-url)
         - name: GITHUB_TOKEN_SECRET_NAME
