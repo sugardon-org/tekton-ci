@@ -10,7 +10,7 @@ spec:
   tls:
     - hosts:
         - tektonel.sugardon.com
-          #secretName: sugardon-com-tls
+      secretName: tektonel-sugardon-com-tls
   rules:
     - host: tektonel.sugardon.com
       http:
