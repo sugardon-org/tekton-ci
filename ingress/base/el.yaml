@@ -7,6 +7,10 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   #ingressClassName: nginx
+  tls:
+    - hosts:
+        - tektonel.sugardon.com
+      secretName: sugardon-com-tls
   rules:
     - host: tektonel.sugardon.com
       http:
