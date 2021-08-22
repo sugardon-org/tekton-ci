@@ -1,0 +1,26 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tekton-cicd-oauth2proxy
+spec:
+  project: default
+  source:
+    directory:
+      recurse: false
+    repoURL: https://github.com/sugardon-org/tekton-cicd
+    path: oauth2proxy/
+    targetRevision: main
+    # https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml#L21
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    namespace: tekton-cicd
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true

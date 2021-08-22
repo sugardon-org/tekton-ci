@@ -1,0 +1,7 @@
+---
+oauth2-proxy:
+  extraArgs:
+  # https://github.com/oauth2-proxy/oauth2-proxy/blob/master/docs/docs/configuration/overview.md
+    - "--provider=github"
+    - "--github-org=sugardon-org"
+    - "--github-team=admin"

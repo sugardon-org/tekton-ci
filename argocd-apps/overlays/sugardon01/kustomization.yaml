@@ -6,3 +6,4 @@ namespace: helmfile-argocd-sugardon01
 
 resources:
   - ../../base
+  - oauth2proxy.yaml
