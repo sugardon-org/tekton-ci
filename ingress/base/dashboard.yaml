@@ -1,0 +1,22 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: oauth2-proxy
+spec:
+  #ingressClassName: nginx
+  tls:
+    - hosts:
+        - tekton.sugardon.com
+      secretName: tekton-sugardon-com-tls
+  rules:
+    - host: tekton.sugardon.com
+      http:
+        paths:
+          - path: /oauth2proxy
+            pathType: Prefix
+            backend:
+              service:
+                name: tekton-cicd-oauth2proxy-oauth2-proxy
+                port:
+                  number: 80

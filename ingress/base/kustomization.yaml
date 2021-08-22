@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - el.yaml
   - certificate.yaml
+  - dashboard.yaml
