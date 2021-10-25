@@ -106,6 +106,15 @@ spec:
               echo "Digest of created app image: $(params.DIGEST)"
         params:
           - name: DIGEST
+  results:
+    # For Chains
+    # cf. https://github.com/tektoncd/chains/blob/main/docs/config.md
+    - name: APP_IMAGE_URL
+      description: "App image url"
+      value: $(params.build-image-url):$(params.build-image-tag)
+    - name: APP_IMAGE_DIGEST
+      description: "App image digest"
+      value: $(tasks.buildpacks.results.APP_IMAGE_DIGEST)
   finally:
     - name: set-github-status-failure
       when:
