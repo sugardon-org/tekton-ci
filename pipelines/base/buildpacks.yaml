@@ -96,6 +96,8 @@ spec:
       params:
         - name: DIGEST
           value: $(tasks.buildpacks.results.APP_IMAGE_DIGEST)
+        - name: URL
+          value: $(params.build-image-url):$(params.build-image-tag)
       taskSpec:
         steps:
           - name: print
@@ -104,17 +106,18 @@ spec:
               #!/usr/bin/env bash
               set -e
               echo "Digest of created app image: $(params.DIGEST)"
+              echo "$(params.DIGEST)" | tee $(results.APP_IMAGE_DIGEST.path)
+              echo "$(params.URL)" | tee $(results.APP_IMAGE_URL.path)
         params:
           - name: DIGEST
-  results:
-    # For Chains
-    # cf. https://github.com/tektoncd/chains/blob/main/docs/config.md
-    - name: APP_IMAGE_URL
-      description: "App image url"
-      value: $(params.build-image-url):$(params.build-image-tag)
-    - name: APP_IMAGE_DIGEST
-      description: "App image digest"
-      value: $(tasks.buildpacks.results.APP_IMAGE_DIGEST)
+          - name: URL
+        results:
+          # For Chains
+          # cf. https://github.com/tektoncd/chains/blob/main/docs/config.md
+          - name: APP_IMAGE_URL
+            description: "App image url"
+          - name: APP_IMAGE_DIGEST
+            description: "App image digest"
   finally:
     - name: set-github-status-failure
       when:
