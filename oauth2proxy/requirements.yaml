@@ -1,5 +1,0 @@
----
-dependencies:
-- name: oauth2-proxy
-  version: 0.1.5
-  repository: https://charts.bitnami.com/bitnami
