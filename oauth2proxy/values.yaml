@@ -5,7 +5,7 @@ oauth2-proxy:
     - "--provider=github"
     - "--github-org=sugardon-org"
     - "--github-team=admin"
-  configuration:
+  config:
     existingSecret: dashboard-oauth2proxy
   redis:
     enabled: false
