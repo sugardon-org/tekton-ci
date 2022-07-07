@@ -5,7 +5,7 @@ metadata:
   name: tekton-cicd-triggertemplates
   namespace: dummy
 spec:
-  project: default
+  project: tekton-cicd
   source:
     directory:
       recurse: false

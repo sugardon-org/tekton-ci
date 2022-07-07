@@ -5,7 +5,7 @@ metadata:
   name: tekton-cicd-ingress
   namespace: dummy
 spec:
-  project: default
+  project: tekton-cicd
   source:
     directory:
       recurse: false
