@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: tekton-cicd-pipelines
+  name: tekton-cicd-pipelinesascode
   namespace: dummy
 spec:
   project: tekton-cicd
