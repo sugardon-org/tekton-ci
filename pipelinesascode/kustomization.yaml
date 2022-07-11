@@ -7,5 +7,6 @@ resources:
   # CRD
   # https://github.com/openshift-pipelines/pipelines-as-code
   - https://github.com/openshift-pipelines/pipelines-as-code/releases/download/0.10.1/release.k8s.yaml
+  - repository/sugardonblog.yaml
 patches:
   - config.yaml
