@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - pipelineruns.yaml
   - pipelines.yaml
+  - pipelinesascode.yaml
   - tasks.yaml
   - rbac.yaml
   - storages.yaml
