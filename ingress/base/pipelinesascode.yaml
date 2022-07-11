@@ -1,0 +1,21 @@
+# https://pipelinesascode.com/docs/install/kubernetes/#ingress
+---
+# https://www.getambassador.io/docs/emissary/latest/topics/running/tls/
+apiVersion: getambassador.io/v3alpha1
+kind: Host
+metadata:
+  name: tektonpac-host
+spec:
+  hostname: tektonpac.sugardon.com
+  tlsSecret:
+    name: tekton-sugardon-com-tls
+
+---
+apiVersion: getambassador.io/v3alpha1
+kind: Mapping
+metadata:
+  name: tektonpac-mapping
+spec:
+  hostname: tektonpac.sugardon.com
+  prefix: /
+  service: pipelines-as-code-controller:8080

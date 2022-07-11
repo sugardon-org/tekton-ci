@@ -12,6 +12,7 @@ spec:
   dnsNames:
     - tektonel.sugardon.com
     - tekton.sugardon.com
+    - tektonpac.sugardon.com
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer

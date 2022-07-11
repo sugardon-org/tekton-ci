@@ -6,3 +6,4 @@ resources:
   - el.yaml
   - certificate.yaml
   - dashboard.yaml
+  - pipelinesascode.yaml
