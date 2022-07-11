@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pipelines-as-code
+  namespace: pipelines-as-code
+data:
+  # https://pipelinesascode.com/docs/install/kubernetes/#tekton-dashboard-integration
+  tekton-dashboard-url: "https://tekton.sugardon.com/"
