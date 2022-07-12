@@ -10,6 +10,7 @@ resources:
   - rbac.yaml
   - storages.yaml
   #- tests.yaml
+  - setup.yaml
   - eventlisteners.yaml
   - ingress.yaml
   - triggerbindings.yaml
