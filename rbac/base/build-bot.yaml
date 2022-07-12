@@ -6,3 +6,5 @@ metadata:
 secrets:
   - name: sugardon-dockerhub-secret
   - name: sugardon-github-secret
+imagePullSecrets:
+  - name: sugardon-dockerhub-secret
