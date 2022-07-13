@@ -1,0 +1,21 @@
+# https://pipelinesascode.com/docs/install/kubernetes/#ingress
+---
+# https://www.getambassador.io/docs/emissary/latest/topics/running/tls/
+apiVersion: getambassador.io/v3alpha1
+kind: Host
+metadata:
+  name: tektonel-host
+spec:
+  hostname: tektonel.sugardon.com
+  tlsSecret:
+    name: tekton-sugardon-com-tls
+
+---
+apiVersion: getambassador.io/v3alpha1
+kind: Mapping
+metadata:
+  name: el-github-sugardon-nextjs-typescript-tutorials
+spec:
+  hostname: tektonel.sugardon.com
+  prefix: /el-github-sugardon-nextjs-typescript-tutorials/
+  service: el-github-sugardon-nextjs-typescript-tutorials:8080
