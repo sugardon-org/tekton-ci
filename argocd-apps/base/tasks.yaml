@@ -9,7 +9,7 @@ spec:
   source:
     directory:
       recurse: false
-    path: tasks/overlays/development
+    path: tasks
     repoURL: https://github.com/sugardon-org/tekton-cicd
     targetRevision: main
   destination:
