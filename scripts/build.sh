@@ -11,3 +11,5 @@ kustomize build eventlisteners -o=$BUILD_DIR
 kustomize build pipelinesascode -o=$BUILD_DIR
 kustomize build setup -o=$BUILD_DIR
 kustomize build tasks -o=$BUILD_DIR
+kustomize build triggertemplates -o=$BUILD_DIR
+kustomize build triggerbindings -o=$BUILD_DIR
