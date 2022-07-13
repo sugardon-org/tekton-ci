@@ -9,7 +9,7 @@ spec:
   source:
     directory:
       recurse: false
-    path: triggerbindings/overlays/development
+    path: triggerbindings
     repoURL: https://github.com/sugardon-org/tekton-cicd
     targetRevision: main
   destination:
