@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eux
+
 BUILD_DIR="build"
 mkdir -p BUILD_DIR
 rm $BUILD_DIR/*.yaml
