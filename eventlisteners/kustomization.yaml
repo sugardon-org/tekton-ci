@@ -4,4 +4,4 @@ kind: Kustomization
 
 namespace: tekton-cicd
 resources:
-  - ../../base
+  - github-sugardon-nextjs-typescript-tutorials.yaml

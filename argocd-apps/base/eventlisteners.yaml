@@ -9,7 +9,7 @@ spec:
   source:
     directory:
       recurse: false
-    path: eventlisteners/overlays/development
+    path: eventlisteners
     repoURL: https://github.com/sugardon-org/tekton-cicd
     targetRevision: main
   destination:
