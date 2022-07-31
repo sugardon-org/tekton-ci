@@ -19,3 +19,12 @@ spec:
   hostname: tektonel.sugardon.com
   prefix: /el-github-sugardon-nextjs-typescript-tutorials/
   service: el-github-sugardon-nextjs-typescript-tutorials:8080
+---
+apiVersion: getambassador.io/v3alpha1
+kind: Mapping
+metadata:
+  name: el-dockerhub-sugardonblog-update-helm-tag
+spec:
+  hostname: tektonel.sugardon.com
+  prefix: /el-dockerhub-sugardonblog-update-helm-tag/
+  service: el-dockerhub-sugardonblog-update-helm-tag:8080

@@ -5,3 +5,4 @@ kind: Kustomization
 namespace: tekton-cicd
 resources:
   - github-pr.yaml
+  - dockerhub.yaml
