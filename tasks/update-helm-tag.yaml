@@ -43,4 +43,3 @@ spec:
             secretKeyRef:
               name: $(params.github-token-name)
               key: $(params.github-token-key)
-
