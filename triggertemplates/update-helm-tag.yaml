@@ -16,29 +16,6 @@ spec:
         params:
           - name: rev
             value: $(tt.params.push_data-tag)
-        tasks:
-          - name: git-clone
-            params:
-              - name: url
-                value: "https://github.com/sugardon-org/manifests"
-              - name: revision
-                value: "main"
-            taskRef:
-              name: git-clone
-            workspace:
-              - name: output
-                workspace: source
-          - name: update-helm-tag
-            runAfter:
-              - git-clone
-            taskRef:
-              name: update-helm-tag
-            params:
-              - name: rev
-                value: $(params.rev)
-            workspaces:
-              - name: source
-                workspaces: source
         workspaces:
           - name: source
             volumeClaimTemplate:
@@ -49,3 +26,31 @@ spec:
                   requests:
                     storage: 1Gi
                 storageClassName: tekton-dev-sc
+        pipelineSpec:
+          workspaces:
+            - name: source
+          params:
+            - name: rev
+          tasks:
+            - name: git-clone
+              params:
+                - name: url
+                  value: "https://github.com/sugardon-org/manifests"
+                - name: revision
+                  value: "main"
+              taskRef:
+                name: git-clone
+              workspace:
+                - name: output
+                  workspace: source
+            - name: update-helm-tag
+              runAfter:
+                - git-clone
+              taskRef:
+                name: update-helm-tag
+              params:
+                - name: rev
+                  value: $(params.rev)
+              workspaces:
+                - name: source
+                  workspaces: source
