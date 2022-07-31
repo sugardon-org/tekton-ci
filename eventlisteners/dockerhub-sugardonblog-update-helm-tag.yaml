@@ -7,14 +7,10 @@ spec:
   triggers:
     - name: dockerhub
       interceptors:
-        - name: "check sugardonblog repo"
-          ref:
-            name: "cel"
-          params:
-            - name: "filter"
-              value: "body.repository.repo_name in ['sugardon/sugardonblog']"
-            - name: "filter sign tag"
-              value: "body.tag.endsWith('.sig')"
+        - cel:
+            filter: "body.repository.repo_name in ['sugardon/sugardonblog']"
+        - cel:
+            filter: "!body.push_data.tag.endsWith('.sig')"
       bindings:
         - ref: dockerhub
       template:
