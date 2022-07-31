@@ -12,7 +12,7 @@ spec:
     - name: script-path
       type: string
       description: script path
-      default: "scripts/update-sugardonblog-tag.sh"
+      default: "scripts/update-helm-tag.sh"
     - name: github-token-name
       type: string
       default: sugardon-github-token
