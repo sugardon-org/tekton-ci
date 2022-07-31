@@ -40,7 +40,7 @@ spec:
                   value: "main"
               taskRef:
                 name: git-clone
-              workspace:
+              workspaces:
                 - name: output
                   workspace: source
             - name: update-helm-tag
