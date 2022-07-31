@@ -1,0 +1,12 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerBinding
+metadata:
+  name: dockerhub
+spec:
+  params:
+    # https://docs.docker.com/docker-hub/webhooks/#example-webhook-payload
+    - name: push_data-tag
+      value: $(body.push_data.tag)
+    - name: repository-repo_name
+      value: $(body.repository.repo_name)

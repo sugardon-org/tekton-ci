@@ -1,0 +1,25 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: dockerhub-sugardonblog-update-helm-tag
+spec:
+  triggers:
+    - name: dockerhub
+      #interceptors:
+      #  - name: "check sugardonblog repo"
+      #    ref:
+      #      name: "cel"
+      #    params:
+      #      - name: "filter"
+      #        value: "body.repository.repo_name in ['opened', 'synchronize', 'reopened']"
+      bindings:
+        - ref: dockerhub
+      template:
+        ref: update-helm-tag
+  resources:
+    kubernetesResource:
+      spec:
+        template:
+          spec:
+            serviceAccountName: tekton-triggers-example-sa

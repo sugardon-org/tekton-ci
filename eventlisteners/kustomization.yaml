@@ -4,5 +4,6 @@ kind: Kustomization
 
 namespace: tekton-cicd
 resources:
-  - github-sugardon-nextjs-typescript-tutorials.yaml
   - ingress.yaml
+  - github-sugardon-nextjs-typescript-tutorials.yaml
+  - dockerhub-sugardonblog-update-helm-tag.yaml

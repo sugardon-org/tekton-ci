@@ -1,0 +1,45 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: update-helm-tag
+spec:
+  params:
+    # https://github.com/sugardon-org/manifests/blob/main/scripts/update-helm-tag.sh
+    - name: rev
+      type: string
+      description: github rev and docker image tag
+    - name: script-path
+      type: string
+      description: script path
+      default: "scripts/update-sugardonblog-tag.sh"
+    - name: github-token-name
+      type: string
+      default: sugardon-github-token
+    - name: github-token-key
+      type: string
+      default: token
+  workspaces:
+    - name: source
+      description: github source
+  steps:
+    - name: echo
+      image: "bash:5.1.16-alpine3.15"
+      script: |
+        #!/usr/bin/env bash
+        # setup
+        apk add --no-cache git
+        apk add --no-cache github-cli
+        apk add --no-cache yq
+        # run
+        pwd
+        ls
+        bash "$(params.script-path)"
+      env:
+        - name: REV
+          value: $(params.rev)
+        - name: GITHUB_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: $(params.github-token-name)
+              key: $(params.github-token-key)

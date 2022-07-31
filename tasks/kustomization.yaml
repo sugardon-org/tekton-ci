@@ -5,6 +5,7 @@ kind: Kustomization
 namespace: tekton-cicd
 resources:
   - hello-world.yaml
+  - update-helm-tag.yaml
   # Catalog Tasks
   # https://github.com/tektoncd/catalog
   - https://raw.githubusercontent.com/tektoncd/catalog/main/task/git-clone/0.7/git-clone.yaml
