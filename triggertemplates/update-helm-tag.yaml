@@ -53,4 +53,4 @@ spec:
                   value: $(params.rev)
               workspaces:
                 - name: source
-                  workspaces: source
+                  workspace: source
