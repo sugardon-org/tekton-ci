@@ -5,6 +5,7 @@ metadata:
   name: config
 spec:
   profile: all
+  targetNamespace: tekton-cicd
   pruner:
     resources:
       - taskrun
