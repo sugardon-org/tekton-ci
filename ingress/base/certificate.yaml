@@ -13,6 +13,7 @@ spec:
     - tektonel.sugardon.com
     - tekton.sugardon.com
     - tektonpac.sugardon.com
+    - tektontest.sugardon.com
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer

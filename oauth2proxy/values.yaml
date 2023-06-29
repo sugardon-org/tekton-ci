@@ -6,6 +6,7 @@ oauth2-proxy:
     github-org: sugardon-org
     github-team: admin
     set-authorization-header: true
+    upstream: "http://tekton-dashboard:9097"
   config:
     existingSecret: dashboard-oauth2proxy
   redis:
