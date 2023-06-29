@@ -50,7 +50,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: oauth2proxy
+  name: test-oauth2proxy
 spec:
   #ingressClassName: nginx
   tls:
