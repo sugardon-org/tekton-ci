@@ -5,6 +5,7 @@ oauth2-proxy:
     provider: github
     github-org: sugardon-org
     github-team: admin
+    set-authorization-header: true
   config:
     existingSecret: dashboard-oauth2proxy
   redis:
