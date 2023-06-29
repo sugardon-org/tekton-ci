@@ -3,9 +3,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: dashboard
-  annotations:
-    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
-    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
 spec:
   tls:
     - hosts:
@@ -15,53 +12,6 @@ spec:
     - host: tekton.sugardon.com
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: tekton-dashboard
-                port:
-                  number: 9097
-
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: oauth2proxy
-spec:
-  #ingressClassName: nginx
-  tls:
-    - hosts:
-        - tekton.sugardon.com
-      secretName: tekton-sugardon-com-tls
-  rules:
-    - host: tekton.sugardon.com
-      http:
-        paths:
-          # https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/overview/
-          - path: /oauth2
-            pathType: Prefix
-            backend:
-              service:
-                name: tekton-cicd-oauth2proxy-oauth2-proxy
-                port:
-                  number: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: test-oauth2proxy
-spec:
-  #ingressClassName: nginx
-  tls:
-    - hosts:
-        - tektontest.sugardon.com
-      secretName: tekton-sugardon-com-tls
-  rules:
-    - host: tektontest.sugardon.com
-      http:
-        paths:
-          # https://oauth2-proxy.github.io/oauth2-proxy/docs/configuration/overview/
           - path: /
             pathType: Prefix
             backend:
