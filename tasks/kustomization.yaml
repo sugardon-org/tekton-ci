@@ -8,7 +8,7 @@ resources:
   - update-helm-tag.yaml
   # Catalog Tasks
   # https://github.com/tektoncd/catalog
-  - https://raw.githubusercontent.com/tektoncd/catalog/main/task/git-clone/0.7/git-clone.yaml
+  - https://raw.githubusercontent.com/tektoncd/catalog/main/task/git-clone/0.9/git-clone.yaml
   - https://raw.githubusercontent.com/tektoncd/catalog/main/task/yaml-lint/0.1/yaml-lint.yaml
-  - https://raw.githubusercontent.com/tektoncd/catalog/main/task/buildpacks/0.5/buildpacks.yaml
+  - https://raw.githubusercontent.com/tektoncd/catalog/main/task/buildpacks/0.6/buildpacks.yaml
   - https://raw.githubusercontent.com/tektoncd/catalog/main/task/github-set-status/0.2/github-set-status.yaml
